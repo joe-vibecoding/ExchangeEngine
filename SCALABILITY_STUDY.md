@@ -60,16 +60,16 @@ We cannot serve 1M users from one Java process. We must separate the **Trading E
 
 ```mermaid
 graph TD
-    User_1M[User Device (1 Million)] -->|WSS / 443| LB[Global Load Balancer (Cloudflare / AWD ALB)]
-    LB -->|Terminates SSL| Generic_Gateway[Cluster of NGINX / HAProxy]
+    User_1M["User Device (1 Million)"] -->|WSS / 443| LB["Global Load Balancer (Cloudflare / AWD ALB)"]
+    LB -->|Terminates SSL| Generic_Gateway["Cluster of NGINX / HAProxy"]
     
-    Generic_Gateway -->|Forward TCP| GW_Fleet[Exchange Gateway Fleet (Java/Netty)]
+    Generic_Gateway -->|Forward TCP| GW_Fleet["Exchange Gateway Fleet (Java/Netty)"]
     
     subgraph "The Scalable Edge"
         GW_Fleet
     end
     
-    GW_Fleet -->|Aeron IPC / UDP Multicast| The_Exchange[Matching Engine (Core)]
+    GW_Fleet -->|Aeron IPC / UDP Multicast| The_Exchange["Matching Engine (Core)"]
 ```
 
 ### 3.2. Step-by-Step Implementation Plan
