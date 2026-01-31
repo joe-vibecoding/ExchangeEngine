@@ -1,0 +1,23 @@
+# Maven
+target/
+*.log
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+
+# VS Code
+.vscode/
+
+# Mac
+.DS_Store
+
+# Aeron / Agrona Shared Memory
+/dev/shm/
+*.active
+*.logbuffer
+
+# Exchange Logs
+**/*.cq4
+**/metadata.cq4t
